@@ -4,7 +4,7 @@ Class dbObj{
   var $servername = "localhost";
   var $username = "root";
   var $password = "";
-  var $dbname = "cars";
+  var $dbname = "school";
   var $conn;
 
   function getConnstring() {
