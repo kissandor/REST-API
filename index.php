@@ -49,7 +49,7 @@ function get_subjects()
   $query="SELECT * FROM subjects";
   $response=array();
   $result=mysqli_query($connection, $query);
-  while($row=mysqli_fetch_array($result))
+  while($row=mysqli_fetch_assoc($result))
   {
     $response[]=$row;
   }
@@ -67,7 +67,7 @@ function get_subjectsid($id=0)
   }
   $response=array();
   $result=mysqli_query($connection, $query);
-  while($row=mysqli_fetch_array($result))
+  while($row=mysqli_fetch_object($result))
   {
     $response[]=$row;
   }
@@ -102,7 +102,7 @@ function insert_subject()
     echo json_encode($response); //response with header 
 }
 
-function delete_ubject($id)
+function delete_subject($id)
 {
    global $connection;
   $query="DELETE FROM subject WHERE id=".$id;
@@ -132,7 +132,7 @@ function update_subject($id)
    $subject_name=$post_vars["Subject"];
    $teacher_name=$post_vars["Teacher"];
    $grade=$post_vars["Grade"];
-   $query="UPDATE subject SET Subject='".$subject_name."', Teacher='".$teacher_name."', Grade='".$grade."' WHERE id=".$id;
+   $query="UPDATE subjects SET Subject='".$subject_name."', Teacher='".$teacher_name."', Grade='".$grade."' WHERE id=".$id;
    if(mysqli_query($connection, $query))
    {
       $response=array(
