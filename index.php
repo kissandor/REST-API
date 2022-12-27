@@ -1,5 +1,6 @@
 <?php
 
+include("token.php");
 include("connection.php");
 $db = new dbObj();
 $connection =  $db->getConnstring();
@@ -22,19 +23,39 @@ switch($request_method)
    break;
  case 'POST':
   // Insert new subject with POST
-  insert_subject();
+  $token=intval($_GET["token"]);
+   global $tokens;
+   if (in_array($token, $tokens))
+   {
+        insert_subject();
+   }
   break;
 
  case 'PUT':
    // Update a subject (with id) and PUT method
    $id=intval($_GET["id"]);
-   update_subject($id);
+   $token=intval($_GET["token"]);
+   
+   global $tokens;
+   
+   if (in_array($token, $tokens))
+   {
+        update_subject($id);
+   } 
+   
    break;
+   
  case 'DELETE':
    //Delete a subject with ID, DELETE method
    $id=intval($_GET["id"]);
-   delete_subject($id);
-    
+   $token=intval($_GET["token"]);
+   global $tokens;
+   
+   if (in_array($token, $tokens))
+   {
+        delete_subject($id);
+   }
+   
    break;
  default:
   // Invalid Request Method

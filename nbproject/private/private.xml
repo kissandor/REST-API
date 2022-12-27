@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/RestApiJLPKL0/connection.php</file>
             <file>file:/C:/xampp/htdocs/RestApiJLPKL0/index.php</file>
+            <file>file:/C:/xampp/htdocs/RestApiJLPKL0/login.php</file>
+            <file>file:/C:/xampp/htdocs/RestApiJLPKL0/token.php</file>
         </group>
     </open-files>
 </project-private>
