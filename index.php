@@ -10,9 +10,9 @@ switch($request_method)
 {
   case 'GET':
    // GET with id
-   if(!empty($_GET["Id"]))
+   if(!empty($_GET["id"]))
    {
-    $id=intval($_GET["Id"]);
+    $id=intval($_GET["id"]);
     get_subjectsid($id);
    }
    else
@@ -27,13 +27,14 @@ switch($request_method)
 
  case 'PUT':
    // Update a subject (with id) and PUT method
-   $id=intval($_GET["Id"]);
+   $id=intval($_GET["id"]);
    update_subject($id);
    break;
  case 'DELETE':
-   // Delete a subject with ID, DELETE method
-   $id=intval($_GET["Id"]);
+   //Delete a subject with ID, DELETE method
+   $id=intval($_GET["id"]);
    delete_subject($id);
+    
    break;
  default:
   // Invalid Request Method
@@ -63,7 +64,7 @@ function get_subjectsid($id=0)
   $query="SELECT * FROM subjects";
   if($id != 0)
   {
-    $query.=" WHERE Id=".$id; //get subject with a given id
+    $query.=" WHERE id=".$id; //get subject with a given id
   }
   $response=array();
   $result=mysqli_query($connection, $query);
@@ -105,7 +106,7 @@ function insert_subject()
 function delete_subject($id)
 {
    global $connection;
-  $query="DELETE FROM subject WHERE id=".$id;
+  $query="DELETE FROM subjects WHERE id=".$id;
    if(mysqli_query($connection, $query))
    {
      $response=array(
