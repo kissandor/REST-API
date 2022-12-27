@@ -36,13 +36,14 @@ function user_login()
     $password=$data["password"];
     
     $query="SELECT * FROM users WHERE username='".$login_name."'and pword='".$password."'";
+    $result = mysqli_query($connection, $query);
     
-    if(mysqli_query($connection, $query))
+    if(mysqli_num_rows($result)>0)
     {
        $response=array(
              'status' => 1,
              'status_message' =>'Login Successfull.',
-             'token' => $tokens[0]
+             'token' => $tokens[random_int(0, 2)]
               );
     }
     else
